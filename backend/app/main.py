@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api import devices
+from app.api import devices, telemetry
 
 app = FastAPI(title="MyHubLocal")
 
@@ -11,5 +11,6 @@ def root():
 def health_check():
     return {"status": "ok"}
 
-# 👇 This new line pulls in all the /devices routes
+# Include API routers
 app.include_router(devices.router, prefix="/devices", tags=["Devices"])
+app.include_router(telemetry.router, prefix="/telemetry", tags=["Telemetry"])

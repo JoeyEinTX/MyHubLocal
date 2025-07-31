@@ -34,6 +34,36 @@ export const deviceAPI = {
   
   // Control a device (turn on/off)
   controlDevice: (id, action) => api.post('/devices/control', { id, action }),
+  
+  // Discover available devices
+  discoverDevices: () => api.get('/devices/discover'),
+  
+  // Add a new device
+  addDevice: (deviceData) => api.post('/devices/add', deviceData),
+  
+  // Remove a device
+  removeDevice: (deviceId) => api.delete(`/devices/remove/${deviceId}`),
+  
+  // Get specific device details
+  getDevice: (deviceId) => api.get(`/devices/${deviceId}`),
+  
+  // Get devices health status (NEW - for dashboard monitoring)
+  getDevicesHealth: () => api.get('/devices/health'),
+};
+
+export const telemetryAPI = {
+  // Get discovery scan history
+  getDiscoveryHistory: (limit = 10) => api.get(`/telemetry/discovery-history?limit=${limit}`),
+  
+  // Get device onboarding history
+  getOnboardingHistory: (limit = 10) => api.get(`/telemetry/onboarding-history?limit=${limit}`),
+  
+  // Get last scan summary
+  getLastScanSummary: () => api.get('/telemetry/scan-summary'),
+  
+  // Internal logging endpoints (used by backend)
+  logDiscovery: (data) => api.post('/telemetry/log-discovery', data),
+  logOnboarding: (data) => api.post('/telemetry/log-onboarding', data),
 };
 
 export default api;

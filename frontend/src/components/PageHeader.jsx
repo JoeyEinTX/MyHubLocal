@@ -1,29 +1,12 @@
 import { useTheme } from '../hooks/useTheme';
+import { Link } from 'react-router-dom';
 
-export function PageHeader({ title, onRefresh, showThemeToggle = true }) {
-  const { currentTheme, setTheme, themes } = useTheme();
+export function PageHeader({ title, onRefresh, showThemeToggle = true, showBackToHome = false }) {
+  const { currentTheme, mode, toggleMode, themes, isDark } = useTheme();
 
-  const toggleThemeMode = () => {
-    // Toggle between light and dark variant of current theme
-    const currentThemeData = themes[currentTheme];
-    const isCurrentlyDark = currentTheme.includes('-dark');
-    
-    if (isCurrentlyDark) {
-      // Switch to light variant
-      const lightTheme = currentTheme.replace('-dark', '-light');
-      if (themes[lightTheme]) {
-        setTheme(lightTheme);
-      }
-    } else {
-      // Switch to dark variant
-      const darkTheme = currentTheme.replace('-light', '-dark');
-      if (themes[darkTheme]) {
-        setTheme(darkTheme);
-      }
-    }
+  const handleThemeToggle = () => {
+    toggleMode();
   };
-
-  const isCurrentlyDark = currentTheme.includes('-dark');
 
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border-secondary backdrop-blur-sm bg-opacity-95">
@@ -35,12 +18,21 @@ export function PageHeader({ title, onRefresh, showThemeToggle = true }) {
               <span className="text-xl text-white font-bold">🏠</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-text">
-                {title || "MyHub Local"}
-              </h1>
-              <p className="text-sm text-text-secondary">
-                Smart Home Control
-              </p>
+              <Link to="/" className="hover:opacity-80 transition-opacity">
+                <h1 className="text-xl font-bold text-text">
+                  {showBackToHome ? "MyHub Local" : (title || "MyHub Local")}
+                </h1>
+              </Link>
+              {showBackToHome && title && title !== "MyHub Local" && (
+                <p className="text-lg text-text-secondary">
+                  {title}
+                </p>
+              )}
+              {!showBackToHome && (
+                <p className="text-sm text-text-secondary">
+                  Smart Home Control
+                </p>
+              )}
             </div>
           </div>
 
@@ -62,11 +54,11 @@ export function PageHeader({ title, onRefresh, showThemeToggle = true }) {
             {/* Theme toggle */}
             {showThemeToggle && (
               <button
-                onClick={toggleThemeMode}
+                onClick={handleThemeToggle}
                 className="p-2 text-text-secondary hover:text-text hover:bg-surface-hover rounded-md transition-colors"
-                title={`Switch to ${isCurrentlyDark ? 'light' : 'dark'} mode`}
+                title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
               >
-                {isCurrentlyDark ? (
+                {isDark ? (
                   // Sun icon for light mode
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -81,16 +73,18 @@ export function PageHeader({ title, onRefresh, showThemeToggle = true }) {
             )}
 
             {/* Settings link */}
-            <a
-              href="/settings"
-              className="p-2 text-text-secondary hover:text-text hover:bg-surface-hover rounded-md transition-colors"
-              title="Settings"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </a>
+            {!showBackToHome && (
+              <Link
+                to="/settings"
+                className="p-2 text-text-secondary hover:text-text hover:bg-surface-hover rounded-md transition-colors"
+                title="Settings"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </Link>
+            )}
           </div>
         </div>
       </div>
