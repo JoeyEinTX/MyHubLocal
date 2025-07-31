@@ -1,0 +1,23 @@
+[
+  {
+    "id": "device_001",
+    "name": "Living Room Light",
+    "type": "light",
+    "ip": "192.168.1.100",
+    "status": "off"
+  },
+  {
+    "id": "device_002",
+    "name": "Kitchen Switch",
+    "type": "switch",
+    "ip": "192.168.1.101",
+    "status": "off"
+  },
+  {
+    "id": "device_003",
+    "name": "Bedroom Thermostat",
+    "type": "thermostat",
+    "ip": "192.168.1.102",
+    "status": "off"
+  }
+]
