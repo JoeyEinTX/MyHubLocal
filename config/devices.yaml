@@ -1,0 +1,5 @@
+devices:
+  - name: Living Room Plug
+    id: plug1
+    type: zwave
+    address: "zwave-node-1"
