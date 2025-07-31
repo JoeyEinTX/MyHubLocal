@@ -1,0 +1,30 @@
+[
+  {
+    "id": "living_room_light",
+    "name": "Living Room Light",
+    "type": "wifi",
+    "ip": "192.168.1.100",
+    "status": "unknown",
+    "added_at": "2025-07-31T18:04:09.499919",
+    "last_seen": null
+  },
+  {
+    "id": "kitchen_switch",
+    "name": "Kitchen Switch",
+    "type": "zwave",
+    "node_id": 2,
+    "status": "unknown",
+    "added_at": "2025-07-31T18:04:09.499927",
+    "last_seen": null
+  },
+  {
+    "id": "bedroom_lamp",
+    "name": "Bedroom Smart Lamp",
+    "status": "on",
+    "type": "wifi",
+    "ip": "192.168.1.110",
+    "node_id": null,
+    "added_at": "2025-07-31T18:04:09.500032",
+    "last_seen": "2025-07-31T18:04:36.458152"
+  }
+]
