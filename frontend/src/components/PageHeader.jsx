@@ -1,7 +1,7 @@
 import { useTheme } from '../hooks/useTheme';
 import { Link } from 'react-router-dom';
 
-export function PageHeader({ title, onRefresh, showThemeToggle = true, showBackToHome = false }) {
+export function PageHeader({ title, onRefresh, showThemeToggle = true, showBackToHome = false, onScenesClick }) {
   const { currentTheme, mode, toggleMode, themes, isDark } = useTheme();
 
   const handleThemeToggle = () => {
@@ -9,27 +9,27 @@ export function PageHeader({ title, onRefresh, showThemeToggle = true, showBackT
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-background border-b border-border-secondary backdrop-blur-sm bg-opacity-95">
+    <header className="sticky top-0 z-50 bg-background border-b border-border-secondary backdrop-blur-sm bg-opacity-95 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-18">
           {/* Left side - App name/logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-xl text-white font-bold">🏠</span>
+          <div className="flex items-center space-x-4">
+            <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-lg">
+              <span className="text-2xl text-white font-bold">🏠</span>
             </div>
             <div>
               <Link to="/" className="hover:opacity-80 transition-opacity">
-                <h1 className="text-xl font-bold text-text">
+                <h1 className="text-2xl font-bold text-text tracking-tight">
                   {showBackToHome ? "MyHub Local" : (title || "MyHub Local")}
                 </h1>
               </Link>
               {showBackToHome && title && title !== "MyHub Local" && (
-                <p className="text-lg text-text-secondary">
+                <p className="text-lg text-text-secondary font-medium">
                   {title}
                 </p>
               )}
               {!showBackToHome && (
-                <p className="text-sm text-text-secondary">
+                <p className="text-sm text-text-muted font-medium tracking-wide">
                   Smart Home Control
                 </p>
               )}
@@ -37,12 +37,12 @@ export function PageHeader({ title, onRefresh, showThemeToggle = true, showBackT
           </div>
 
           {/* Right side - Controls */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-4">
             {/* Refresh button */}
             {onRefresh && (
               <button
                 onClick={onRefresh}
-                className="p-2 text-text-secondary hover:text-text hover:bg-surface-hover rounded-md transition-colors"
+                className="p-3 text-text-secondary hover:text-text hover:bg-surface-hover rounded-xl transition-all duration-200 hover:scale-105"
                 title="Refresh devices"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,11 +51,24 @@ export function PageHeader({ title, onRefresh, showThemeToggle = true, showBackT
               </button>
             )}
 
+            {/* Scenes button */}
+            {onScenesClick && (
+              <button
+                onClick={onScenesClick}
+                className="p-3 text-text-secondary hover:text-text hover:bg-surface-hover rounded-xl transition-all duration-200 hover:scale-105"
+                title="Scenes"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </button>
+            )}
+
             {/* Theme toggle */}
             {showThemeToggle && (
               <button
                 onClick={handleThemeToggle}
-                className="p-2 text-text-secondary hover:text-text hover:bg-surface-hover rounded-md transition-colors"
+                className="p-3 text-text-secondary hover:text-text hover:bg-surface-hover rounded-xl transition-all duration-200 hover:scale-105"
                 title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
               >
                 {isDark ? (
@@ -76,7 +89,7 @@ export function PageHeader({ title, onRefresh, showThemeToggle = true, showBackT
             {!showBackToHome && (
               <Link
                 to="/settings"
-                className="p-2 text-text-secondary hover:text-text hover:bg-surface-hover rounded-md transition-colors"
+                className="p-3 text-text-secondary hover:text-text hover:bg-surface-hover rounded-xl transition-all duration-200 hover:scale-105"
                 title="Settings"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

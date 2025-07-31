@@ -51,6 +51,14 @@ export const deviceAPI = {
   getDevicesHealth: () => api.get('/devices/health'),
 };
 
+export const scenesAPI = {
+  // Get all available scenes
+  getScenes: () => api.get('/scenes/list'),
+  
+  // Activate a scene
+  activateScene: (sceneId) => api.post('/scenes/activate', { scene_id: sceneId }),
+};
+
 export const telemetryAPI = {
   // Get discovery scan history
   getDiscoveryHistory: (limit = 10) => api.get(`/telemetry/discovery-history?limit=${limit}`),

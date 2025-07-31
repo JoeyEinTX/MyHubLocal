@@ -111,6 +111,216 @@
       "zwave_found": 2,
       "total_found": 2,
       "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T19:58:28.048812",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T19:58:29.101116",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:07:11.499985",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:07:12.674532",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:07:17.206316",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:10:21.830996",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:10:36.652583",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:13:36.443348",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:13:37.492242",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:13:41.755313",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:13:42.807692",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:13:55.452611",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:13:56.501368",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:18:43.332114",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:18:44.382153",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:19:22.084231",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:19:23.134120",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:19:48.711347",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:32:02.384906",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:32:03.436023",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:32:06.002885",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:32:07.063701",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:32:09.053830",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:32:10.110172",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:32:29.058998",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:32:30.114149",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:32:40.155299",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1020
+    },
+    {
+      "timestamp": "2025-07-31T20:32:41.224031",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:34:08.423058",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:34:09.481582",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
     }
   ],
   "onboarding_history": [
@@ -141,6 +351,48 @@
       "device_name": "Test Z-Wave Device 4",
       "type": "zwave",
       "status": "added"
+    },
+    {
+      "timestamp": "2025-07-31T19:58:37.279157",
+      "device_id": "zwave_node_2",
+      "device_name": "Z-Wave Light Switch",
+      "type": "zwave",
+      "status": "added"
+    },
+    {
+      "timestamp": "2025-07-31T19:58:39.300207",
+      "device_id": "zwave_node_3",
+      "device_name": "Z-Wave Motion Sensor",
+      "type": "zwave",
+      "status": "added"
+    },
+    {
+      "timestamp": "2025-07-31T20:10:40.364480",
+      "device_id": "zwave_node_3",
+      "device_name": "Z-Wave Motion Sensor",
+      "type": "zwave",
+      "status": "added"
+    },
+    {
+      "timestamp": "2025-07-31T20:19:26.420732",
+      "device_id": "zwave_node_3",
+      "device_name": "Z-Wave Motion Sensor",
+      "type": "zwave",
+      "status": "failed"
+    },
+    {
+      "timestamp": "2025-07-31T20:19:32.044112",
+      "device_id": "zwave_node_2",
+      "device_name": "Z-Wave Light Switch",
+      "type": "zwave",
+      "status": "failed"
+    },
+    {
+      "timestamp": "2025-07-31T20:19:36.849241",
+      "device_id": "zwave_node_3",
+      "device_name": "Z-Wave Motion Sensor",
+      "type": "zwave",
+      "status": "failed"
     }
   ],
   "metadata": {

@@ -5,6 +5,7 @@ import { PageHeader } from '../components/PageHeader';
 import { DeviceGridSkeleton, ErrorMessage, EmptyState } from '../components/LoadingStates';
 import { AddDeviceModal } from '../components/AddDeviceModal';
 import { DiscoveredDevicesModal } from '../components/DiscoveredDevicesModal';
+import ScenesModal from '../components/ScenesModal';
 
 export default function Home() {
   // Device state management
@@ -17,9 +18,14 @@ export default function Home() {
   const [discoveryError, setDiscoveryError] = useState(null);
   const [showAddModal, setShowAddModal] = useState(false);
   const [isDiscoveredDevicesModalOpen, setIsDiscoveredDevicesModalOpen] = useState(false);
+  const [showScenesModal, setShowScenesModal] = useState(false);
   
   // Telemetry state
   const [lastScanSummary, setLastScanSummary] = useState(null);
+  
+  // Animation state for premium UX
+  const [buttonTextKey, setButtonTextKey] = useState(0); // Force text re-render for animation
+  const [prevDeviceCount, setPrevDeviceCount] = useState(0);
 
   /**
    * Fetch registered devices from the backend
@@ -91,6 +97,12 @@ export default function Home() {
       });
       
       setDiscoveredDevices(filteredDiscovered);
+      
+      // Trigger text animation if device count changed
+      if (filteredDiscovered.length !== prevDeviceCount) {
+        setButtonTextKey(prev => prev + 1);
+        setPrevDeviceCount(filteredDiscovered.length);
+      }
       
       console.log('🔍 Discovery completed:', {
         total_found: discoveredList.length,
@@ -201,6 +213,13 @@ export default function Home() {
   };
 
   /**
+   * Handle device removal
+   */
+  const handleDeviceRemove = (deviceId) => {
+    setDevices(prev => prev.filter(device => device.id !== deviceId));
+  };
+
+  /**
    * Handle successful device addition from the modal
    * Refreshes both device lists and telemetry data, then closes the modal
    */
@@ -270,18 +289,19 @@ export default function Home() {
       <PageHeader 
         title="MyHub Local"
         onRefresh={fetchDevices}
+        onScenesClick={() => setShowScenesModal(true)}
         showThemeToggle={true}
       />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Page Title & Stats with Rescan Button */}
-        <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+        <div className="mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-text mb-2">
+            <h1 className="text-4xl font-bold text-text mb-3 tracking-tight">
               Smart Home Dashboard
             </h1>
-            <p className="text-text-secondary">
+            <p className="text-lg text-text-secondary tracking-wide">
               {loading ? 'Loading devices...' : 
                error ? 'Unable to load devices' :
                devices.length === 0 ? 'No devices found' :
@@ -290,31 +310,41 @@ export default function Home() {
           </div>
           
           {/* Dynamic Discovery Button */}
-          <div className="mt-4 sm:mt-0">
+          <div className="mt-6 sm:mt-0">
             <button
               onClick={handleDynamicButtonClick}
               disabled={loadingDiscovery}
-              className={`px-4 py-2 text-white rounded-lg hover:opacity-80 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2 ${
-                discoveredDevices.length > 0 
-                  ? 'bg-primary pulse-glow' 
-                  : 'bg-accent'
-              }`}
+              className={`
+                px-6 py-3 text-white rounded-xl font-semibold
+                transition-all duration-500 ease-out
+                disabled:opacity-50 disabled:cursor-not-allowed 
+                flex items-center space-x-3
+                hover:scale-[1.02] hover:shadow-lg hover:brightness-110
+                active:scale-95
+                tracking-wide
+                ${discoveredDevices.length > 0 
+                  ? 'bg-primary pulse-glow shadow-[0_0_12px_theme(colors.primary/40)]' 
+                  : 'bg-accent hover:bg-accent/90 shadow-md'
+                }
+              `}
             >
               {loadingDiscovery ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   <span>Scanning...</span>
                 </>
               ) : discoveredDevices.length > 0 ? (
                 <>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
-                  <span>{discoveredDevices.length} Device{discoveredDevices.length !== 1 ? 's' : ''} Found!</span>
+                  <span key={buttonTextKey} className="text-pop">
+                    {discoveredDevices.length} Device{discoveredDevices.length !== 1 ? 's' : ''} Found!
+                  </span>
                 </>
               ) : (
                 <>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                   </svg>
                   <span>Rescan Devices</span>
@@ -383,7 +413,7 @@ export default function Home() {
             action={
               <button
                 onClick={openAddModal}
-                className="px-6 py-2 bg-primary text-white rounded-md hover:opacity-80 transition-opacity"
+                className="px-8 py-3 bg-primary text-white rounded-xl hover:brightness-110 hover:scale-[1.02] transition-all duration-200 font-semibold tracking-wide shadow-lg"
               >
                 Add Your First Device
               </button>
@@ -391,21 +421,22 @@ export default function Home() {
           />
         ) : (
           <div>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold text-text">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-2xl font-bold text-text tracking-tight">
                 Connected Devices
               </h2>
-              <span className="text-sm text-text-secondary">
+              <span className="text-lg text-text-muted font-medium bg-card px-4 py-2 rounded-xl border border-border-secondary shadow-sm">
                 {devices.length} device{devices.length !== 1 ? 's' : ''}
               </span>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {devices.map(device => (
                 <DeviceCard 
                   key={device.id} 
                   device={device} 
                   onDeviceUpdate={handleDeviceUpdate}
+                  onRemoveDevice={handleDeviceRemove}
                 />
               ))}
             </div>
@@ -417,11 +448,11 @@ export default function Home() {
       {devices.length > 0 && (
         <button
           onClick={openAddModal}
-          className="fixed bottom-6 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 flex items-center justify-center z-40"
+          className="fixed bottom-8 right-8 w-16 h-16 bg-primary text-white rounded-2xl shadow-xl hover:shadow-2xl hover:scale-[1.05] hover:brightness-110 transition-all duration-300 flex items-center justify-center z-40 border-2 border-white/20"
           title="Add New Device"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
           </svg>
         </button>
       )}
@@ -443,6 +474,12 @@ export default function Home() {
         addingDevices={addingDevices}
         scanSummary={lastScanSummary}
         isRescanning={loadingDiscovery}
+      />
+
+      {/* Scenes Modal */}
+      <ScenesModal
+        isOpen={showScenesModal}
+        onClose={() => setShowScenesModal(false)}
       />
     </div>
   );

@@ -18,16 +18,6 @@
     "last_seen": "2025-07-31T18:30:59.111238"
   },
   {
-    "id": "bedroom_lamp",
-    "name": "Bedroom Smart Lamp",
-    "status": "off",
-    "type": "wifi",
-    "ip": "192.168.1.110",
-    "node_id": null,
-    "added_at": "2025-07-31T18:04:09.500032",
-    "last_seen": "2025-07-31T18:30:58.434735"
-  },
-  {
     "id": "test_light_2",
     "name": "Test Light 2",
     "status": "off",
@@ -45,6 +35,26 @@
     "ip": null,
     "node_id": 4,
     "added_at": "2025-07-31T19:42:03.004238",
+    "last_seen": null
+  },
+  {
+    "id": "zwave_node_2",
+    "name": "Z-Wave Light Switch",
+    "status": "off",
+    "type": "zwave",
+    "ip": null,
+    "node_id": 2,
+    "added_at": "2025-07-31T19:58:37.278173",
+    "last_seen": null
+  },
+  {
+    "id": "zwave_node_3",
+    "name": "Z-Wave Motion Sensor",
+    "status": "off",
+    "type": "zwave",
+    "ip": null,
+    "node_id": 3,
+    "added_at": "2025-07-31T20:10:40.363253",
     "last_seen": null
   }
 ]

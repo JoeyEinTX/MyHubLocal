@@ -52,8 +52,7 @@ function ThemePreviewCard({ themeKey, themeData, currentTheme, mode, onSelect })
         {/* Success Color */}
         <div className="space-y-1">
           <div
-            className="w-full h-8 rounded border border-border-secondary"
-            style={{ backgroundColor: `rgb(${colors.success})` }}
+            className="w-full h-8 rounded border border-border-secondary bg-success"
             title="Success Color"
           />
           <div className="text-xs text-center truncate text-text-secondary">
@@ -64,8 +63,7 @@ function ThemePreviewCard({ themeKey, themeData, currentTheme, mode, onSelect })
         {/* Warning Color */}
         <div className="space-y-1">
           <div
-            className="w-full h-8 rounded border border-border-secondary"
-            style={{ backgroundColor: `rgb(${colors.warning})` }}
+            className="w-full h-8 rounded border border-border-secondary bg-warning"
             title="Warning Color"
           />
           <div className="text-xs text-center truncate text-text-secondary">
