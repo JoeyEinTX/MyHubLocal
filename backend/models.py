@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, validator
-from typing import Literal, Optional, Union
+from typing import Literal, Optional, Union, Dict, Any
 import re
 from datetime import datetime
 
@@ -79,6 +79,9 @@ class DeviceAdd(BaseModel):
 class DeviceAction(BaseModel):
     id: str = Field(..., description="Device ID to control")
     action: Literal["on", "off"] = Field(..., description="Action to perform")
+
+class DeviceState(BaseModel):
+    state: Dict[str, Any] = Field(..., description="Flexible state dictionary for device control")
 
 class DeviceResponse(BaseModel):
     success: bool = Field(..., description="Whether the operation was successful")

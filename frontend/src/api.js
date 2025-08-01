@@ -33,7 +33,7 @@ export const deviceAPI = {
   getDevices: () => api.get('/devices/list'),
   
   // Control a device (turn on/off)
-  controlDevice: (id, action) => api.post('/devices/control', { id, action }),
+  controlDevice: (id, action) => api.put(`/devices/${id}/state`, { state: { on: action === 'on' } }),
   
   // Discover available devices
   discoverDevices: () => api.get('/devices/discover'),

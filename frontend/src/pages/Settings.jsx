@@ -123,11 +123,19 @@ function ThemePreviewCard({ themeKey, themeData, currentTheme, mode, onSelect })
 export default function Settings() {
   const { currentTheme, mode, toggleMode, setTheme, themes } = useTheme();
   const [activeTab, setActiveTab] = useState('appearance');
+  const [telemetryRefresh, setTelemetryRefresh] = useState(null);
 
   const tabs = [
     { id: 'appearance', label: 'Appearance', icon: '🎨' },
     { id: 'telemetry', label: 'Telemetry', icon: '📊' }
   ];
+
+  // Handle refresh based on active tab
+  const handleRefresh = () => {
+    if (activeTab === 'telemetry' && telemetryRefresh) {
+      telemetryRefresh();
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -136,35 +144,29 @@ export default function Settings() {
         title="Settings"
         showThemeToggle={true}
         showBackToHome={true}
+        onRefresh={activeTab === 'telemetry' ? handleRefresh : undefined}
       />
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <p className="text-text-secondary">
-            Customize your MyHub Local experience
-          </p>
-        </div>
         
         {/* Tab Navigation */}
         <div className="mb-8">
-          <div className="border-b border-border-secondary">
-            <nav className="-mb-px flex space-x-8">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
-                    activeTab === tab.id
-                      ? 'border-primary text-primary'
-                      : 'border-transparent text-text-secondary hover:text-text hover:border-border-primary'
-                  }`}
-                >
-                  <span className="mr-2">{tab.icon}</span>
-                  {tab.label}
-                </button>
-              ))}
-            </nav>
+          <div className="bg-surface-hover rounded-xl p-1 inline-flex">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-6 py-3 rounded-lg font-medium text-sm transition-all duration-200 flex items-center space-x-2 ${
+                  activeTab === tab.id
+                    ? 'bg-primary text-white shadow-md'
+                    : 'text-text-secondary hover:text-text hover:bg-background'
+                }`}
+              >
+                <span>{tab.icon}</span>
+                <span>{tab.label}</span>
+              </button>
+            ))}
           </div>
         </div>
 
@@ -211,7 +213,7 @@ export default function Settings() {
 
         {activeTab === 'telemetry' && (
           <div>
-            <TelemetrySettings />
+            <TelemetrySettings onRefreshReady={setTelemetryRefresh} />
           </div>
         )}
       </main>

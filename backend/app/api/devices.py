@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from models import Device, DeviceAdd, DeviceAction, DeviceResponse
+from models import Device, DeviceAdd, DeviceAction, DeviceState, DeviceResponse
 from app.core.registry import (
     load_device_registry,
     save_device_registry, 
@@ -23,6 +23,7 @@ from app.core.registry import (
 )
 from app.core.telemetry import telemetry_manager
 from app.core.discover import discover_all_devices, merge_discovered_devices
+from device_protocols import send_shelly_command, send_zwave_command
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -182,51 +183,88 @@ async def add_device(device_data: DeviceAdd):
             detail=f"Failed to add device: {str(e)}"
         )
 
-@router.post("/control", response_model=DeviceResponse)
-async def control_device(action_data: DeviceAction):
+@router.put("/{device_id}/state", response_model=DeviceResponse)
+async def control_device_state(device_id: str, payload: DeviceState):
     """
-    Control a device by toggling its status.
-    Updates the device status in persistent storage.
+    Control a device by sending commands through appropriate protocol handlers.
+    Updates the device status via actual device communication.
     """
     try:
         # Get the device from registry
-        device_data = await get_device_from_registry(action_data.id)
+        device_data = await get_device_from_registry(device_id)
         if not device_data:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Device with ID '{action_data.id}' not found"
+                detail=f"Device with ID '{device_id}' not found"
             )
         
-        # Update device status
+        device_type = device_data.get('type')
         old_status = device_data.get('status', 'off')
-        new_status = action_data.action
         
-        success = await update_device_in_registry(
-            action_data.id, 
-            {"status": new_status}
-        )
+        # Send command through appropriate protocol handler
+        command_success = False
         
-        if success:
-            # Get updated device data
-            updated_device_data = await get_device_from_registry(action_data.id)
-            updated_device = Device(**updated_device_data)
+        if device_type == "wifi":
+            device_ip = device_data.get('ip')
+            if not device_ip:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail=f"Wi-Fi device '{device_id}' missing IP address"
+                )
+            command_success = await send_shelly_command(device_ip, payload.state)
             
-            logger.info(f"Device {action_data.id} status: {old_status} -> {new_status}")
-            return DeviceResponse(
-                success=True,
-                message=f"Device '{updated_device.name}' turned {new_status}",
-                device=updated_device
+        elif device_type == "zwave":
+            node_id = device_data.get('node_id')
+            if not node_id:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail=f"Z-Wave device '{device_id}' missing node ID"
+                )
+            command_success = await send_zwave_command(node_id, payload.state)
+            
+        else:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Unsupported device type: {device_type}"
             )
+        
+        # Handle command result
+        if command_success:
+            # Determine new status from payload
+            new_status = "on" if payload.state.get("on", False) else "off"
+            
+            # Update device status in registry
+            success = await update_device_in_registry(
+                device_id, 
+                {"status": new_status, "last_seen": time.time()}
+            )
+            
+            if success:
+                # Get updated device data
+                updated_device_data = await get_device_from_registry(device_id)
+                updated_device = Device(**updated_device_data)
+                
+                logger.info(f"Device {device_id} controlled via {device_type}: {old_status} -> {new_status}")
+                return DeviceResponse(
+                    success=True,
+                    message=f"Device '{updated_device.name}' controlled successfully via {device_type} protocol",
+                    device=updated_device
+                )
+            else:
+                raise HTTPException(
+                    status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                    detail="Command succeeded but failed to update device registry"
+                )
         else:
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail="Failed to update device status"
+                detail=f"Failed to control {device_type} device - command was not successful"
             )
             
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"Failed to control device {action_data.id}: {e}")
+        logger.error(f"Failed to control device {device_id}: {e}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to control device: {str(e)}"

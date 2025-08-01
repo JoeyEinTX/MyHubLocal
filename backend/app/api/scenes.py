@@ -12,9 +12,9 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from models import DeviceAction, DeviceResponse
+from models import DeviceState, DeviceResponse
 from app.core.registry import load_device_registry
-from app.api.devices import control_device
+from app.api.devices import control_device_state
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -132,13 +132,14 @@ async def activate_all_devices(action: str) -> SceneResponse:
         # Control each device
         for device_data in devices_data:
             try:
-                device_action = DeviceAction(id=device_data.get('id'), action=action)
-                result = await control_device(device_action)
+                device_id = device_data.get('id')
+                device_state = DeviceState(state={"on": action == "on"})
+                result = await control_device_state(device_id, device_state)
                 if result.success:
                     successful_controls += 1
                 else:
                     failed_controls += 1
-                    logger.warning(f"Failed to control device {device_data.get('id')}: {result.message}")
+                    logger.warning(f"Failed to control device {device_id}: {result.message}")
             except Exception as e:
                 failed_controls += 1
                 logger.warning(f"Error controlling device {device_data.get('id')}: {e}")

@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { telemetryAPI } from '../api';
-import { PageHeader } from '../components/PageHeader';
 
-export default function TelemetrySettings() {
+export default function TelemetrySettings({ onRefreshReady }) {
   const [discoveryHistory, setDiscoveryHistory] = useState([]);
   const [onboardingHistory, setOnboardingHistory] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -40,7 +39,12 @@ export default function TelemetrySettings() {
 
   useEffect(() => {
     fetchTelemetryData();
-  }, []);
+    
+    // Provide refresh function to parent
+    if (onRefreshReady) {
+      onRefreshReady(fetchTelemetryData);
+    }
+  }, [onRefreshReady]);
 
   /**
    * Format timestamp for display
@@ -61,17 +65,9 @@ export default function TelemetrySettings() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Page Header */}
-      <PageHeader 
-        title="Telemetry"
-        subtitle="Device discovery and onboarding analytics"
-        onRefresh={fetchTelemetryData}
-        showThemeToggle={true}
-      />
-
+    <div>
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="py-8">
         {error && (
           <div className="mb-6 p-4 bg-danger bg-opacity-10 border border-danger rounded-lg">
             <div className="flex items-start space-x-3">
