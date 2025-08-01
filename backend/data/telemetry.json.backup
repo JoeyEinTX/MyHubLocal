@@ -1,195 +1,6 @@
 {
   "discovery_history": [
     {
-      "timestamp": "2025-07-31T19:23:10.336991",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:23:24.626475",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:30:19.090318",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:30:20.139015",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:38:36.652918",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:38:51.364541",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:38:52.414556",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:40:18.418958",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:40:56.945471",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:41:11.376506",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:41:12.425606",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:43:23.591109",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:43:24.644150",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:43:41.701895",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:44:25.677665",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:44:26.726491",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:58:28.048812",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T19:58:29.101116",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T20:07:11.499985",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T20:07:12.674532",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T20:07:17.206316",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T20:10:21.830996",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T20:10:36.652583",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T20:13:36.443348",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T20:13:37.492242",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T20:13:41.755313",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
-      "timestamp": "2025-07-31T20:13:42.807692",
-      "wifi_found": 0,
-      "zwave_found": 2,
-      "total_found": 2,
-      "duration_ms": 1000
-    },
-    {
       "timestamp": "2025-07-31T20:13:55.452611",
       "wifi_found": 0,
       "zwave_found": 2,
@@ -310,6 +121,230 @@
     },
     {
       "timestamp": "2025-07-31T20:34:08.423058",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-07-31T20:34:09.481582",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:12:48.258310",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:12:49.307063",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:15:00.499031",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:15:01.545643",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:15:13.791426",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:15:14.845503",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:21:40.407328",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:21:41.461074",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:21:45.463197",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:21:46.549201",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:21:49.318265",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:21:50.371200",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:21:58.058453",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:21:59.114787",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:29:48.290465",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:29:49.348810",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:30:05.758611",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:30:06.844020",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:31:09.081109",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:31:10.128457",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:31:11.728948",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:31:12.780340",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:31:14.868493",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:31:15.914369",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:31:19.814567",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:31:20.860876",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:33:24.263943",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:33:25.312270",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:33:42.635509",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:33:43.692784",
+      "wifi_found": 0,
+      "zwave_found": 2,
+      "total_found": 2,
+      "duration_ms": 1000
+    },
+    {
+      "timestamp": "2025-08-01T18:48:31.815157",
       "wifi_found": 0,
       "zwave_found": 2,
       "total_found": 2,
