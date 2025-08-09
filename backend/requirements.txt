@@ -5,3 +5,5 @@ python-dotenv
 pyyaml
 zeroconf
 httpx
+zwave-js-server-python
+govee-api-laggat

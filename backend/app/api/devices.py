@@ -222,6 +222,26 @@ async def control_device_state(device_id: str, payload: DeviceState):
                 )
             command_success = await send_zwave_command(node_id, payload.state)
             
+        elif device_type == "govee":
+            device_ip = device_data.get('ip')
+            if not device_ip:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail=f"Govee device '{device_id}' missing IP address"
+                )
+            from app.core.govee import send_govee_command
+            
+            # Convert state to Govee format
+            govee_command = {}
+            if "on" in payload.state:
+                govee_command["onOff"] = 1 if payload.state["on"] else 0
+            if "brightness" in payload.state:
+                govee_command["brightness"] = payload.state["brightness"]
+            if "color" in payload.state:
+                govee_command["color"] = payload.state["color"]
+                
+            command_success = await send_govee_command(device_ip, govee_command)
+            
         else:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,

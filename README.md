@@ -8,13 +8,14 @@ No cloud dependencies. Just your LAN, your devices, your control.
 ## 🚀 Features (Current / Planned)
 
 - ✅ FastAPI backend with device control endpoints
-- ✅ Single test Z-Wave device for development  
+- ✅ **Real Z-Wave integration via Z-Wave JS Server**
+- ✅ Graceful fallback when Z-Wave hardware not available
 - ✅ REST API endpoints: GET /devices/list, POST /devices/control
 - ✅ React frontend with TailwindCSS
 - ✅ Device dashboard with toggle controls
 - ✅ **NEW: Dual theme system (Light & Dark modes)**
 - ✅ **NEW: Theme toggle in navigation bar**
-- 🔮 Future: Real Z-Wave integration, Shelly devices, ESP32 support
+- 🔮 Future: Shelly devices, ESP32 support
 - 🔮 Future: Secure remote access, touchscreen UI, automation rules
 
 ---

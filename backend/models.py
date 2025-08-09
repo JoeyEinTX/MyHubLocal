@@ -7,8 +7,8 @@ class Device(BaseModel):
     id: str = Field(..., description="Unique device identifier")
     name: str = Field(..., min_length=1, max_length=100, description="Human-readable device name")
     status: Literal["on", "off", "unknown"] = Field(default="unknown", description="Current device status")
-    type: Literal["wifi", "zwave"] = Field(..., description="Device connection type")
-    ip: Optional[str] = Field(None, description="Device IP address (for Wi-Fi devices)")
+    type: Literal["wifi", "zwave", "govee"] = Field(..., description="Device connection type")
+    ip: Optional[str] = Field(None, description="Device IP address (for Wi-Fi/Govee devices)")
     node_id: Optional[int] = Field(None, description="Z-Wave node ID (for Z-Wave devices)")
     added_at: Optional[str] = Field(None, description="Timestamp when device was added")
     last_seen: Optional[str] = Field(None, description="Timestamp when device was last seen")
@@ -37,8 +37,8 @@ class Device(BaseModel):
 class DeviceAdd(BaseModel):
     id: str = Field(..., description="Unique device identifier")
     name: str = Field(..., min_length=1, max_length=100, description="Human-readable device name")
-    type: Literal["wifi", "zwave"] = Field(..., description="Device connection type")
-    ip: Optional[str] = Field(None, description="Device IP address (required for Wi-Fi devices)")
+    type: Literal["wifi", "zwave", "govee"] = Field(..., description="Device connection type")
+    ip: Optional[str] = Field(None, description="Device IP address (required for Wi-Fi/Govee devices)")
     node_id: Optional[int] = Field(None, description="Z-Wave node ID (required for Z-Wave devices)")
     
     @validator('id')
