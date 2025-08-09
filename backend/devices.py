@@ -170,6 +170,38 @@ async def remove_device_endpoint(device_id: str):
             detail=f"Failed to remove device: {str(e)}"
         )
 
+@router.get("/discover/manual/{ip_address}")
+async def discover_manual_device(ip_address: str):
+    """
+    Manually discover/test a device at a specific IP address.
+    Tests for Shelly device endpoints to see if a device is available.
+    """
+    try:
+        from app.core.discover import discover_shelly_manual
+        
+        logger.info(f"Starting manual discovery for IP: {ip_address}")
+        device = await discover_shelly_manual(ip_address)
+        
+        if device:
+            return {
+                "success": True,
+                "device": device,
+                "message": f"Device found at {ip_address}"
+            }
+        else:
+            return {
+                "success": False,
+                "device": None,
+                "message": f"No Shelly device found at {ip_address}"
+            }
+        
+    except Exception as e:
+        logger.error(f"Manual discovery failed for {ip_address}: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Manual discovery failed: {str(e)}"
+        )
+
 @router.get("/discover")
 async def discover_devices():
     """
